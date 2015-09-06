@@ -1,13 +1,14 @@
 {
-    'name': 'Mage2odoo Amasty Salesman',
+    'name': 'Mage2odoo Custom Shipping Account',
     'version': '1.1',
     'author': 'Kyle Waid',
     'category': 'Sales Management',
-    'depends': ['mage2odoo'],
+    'depends': ['delivery', 'mage2odoo'],
     'website': 'https://www.gcotech.com',
     'description': """ 
     """,
-    'data': [
+    'data': ['views/delivery.xml',
+		'views/sale.xml',
     ],
     'test': [
     ],

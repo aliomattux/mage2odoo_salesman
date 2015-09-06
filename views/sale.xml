@@ -1,0 +1,23 @@
+<openerp>
+    <data>
+        <record id="view_mage_order_custom_account_form" model="ir.ui.view">
+            <field name="name">Mage Sale Order Custom Account Form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="delivery.view_order_withcarrier_form" />
+            <field name="arch" type="xml">
+		<field name="carrier_id" position="replace">
+		    <field name="carrier_id" context="{'order_id':active_id or False, 'tree_view_ref': 'mage2odoo.mage_carrier_service_search_view'}" class="oe_inline" on_change="onchange_carrier_id(carrier_id, partner_invoice_id)" colspan="3" />
+		</field>
+		<group name="mage_shipment" position="after">
+		    <field name="custom_account" invisible="1" />
+		    <group string="Customers Account Info" attrs="{'invisible': [('custom_account', '=', False)]}">
+		        <field name="service" attrs="{'required': [('custom_account', '=', True)]}" />
+		        <field name="account_number" attrs="{'required': [('custom_account', '=', True)], 'invisible': [('service', '=', False)]}" />
+			<field name="account_name" attrs="{'required': [('custom_account', '=', True)], 'invisible': [('service', '=', False)]}" />
+		        <field name="account_zipcode" attrs="{'required': [('custom_account', '=', True)], 'invisible': [('service', '=', False)]}" />
+		    </group>
+		</group>
+	    </field>
+	</record>
+    </data>
+</openerp>
